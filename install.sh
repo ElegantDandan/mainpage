@@ -8,5 +8,6 @@ npm install hexo -g
 
 cd $SHELL_FOLDER/hexo
 npm install
+npm i hexo-generator-json-content --save
 
 

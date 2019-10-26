@@ -3,16 +3,16 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Noodlefighter's HP
-subtitle: ——蠢战士
-description: 开坑不填是生活中一大乐趣.
-author: Noodlefighter
+title: dandan's HP
+subtitle: ——蛋淡
+description: 忽然觉得做技术的是世界上最可爱的一群人
+author: dandan
 language: zh-CN
 timezone: 
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://noodlefighter.com
+url: http://cddan.com
 root: /
 permalink: post/:title/
 permalink_defaults:
@@ -63,14 +63,19 @@ pagination_dir: page
 # Extensions
 ## Plugins: http://hexo.io/plugins/
 ## Themes: http://hexo.io/themes/
-theme: chan
+theme: yilia
 
-disqus_shortname: noodlefighter
+disqus_shortname: dandan
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
-deploy:
-  type:
+deploy: 
+  type: git
+  repo: git@github.com:ElegantDandan/ElegantDandan.github.io.git
+  branch: master
+
+tag_plantuml:
+	type: static  
 
 githubEmojis:
   enable: true
@@ -87,6 +92,21 @@ plantuml:
 spoiler:
   enable: true
 
-
-
-
+jsonContent:
+   meta: false
+   pages: false
+   posts:
+     title: true
+     date: true
+     path: true
+     text: false
+     raw: false
+     content: false
+     slug: false
+     updated: false
+     comments: false
+     link: false
+     permalink: false
+     excerpt: false
+     categories: false
+     tags: true
