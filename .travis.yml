@@ -10,6 +10,9 @@ branches:
   only:
     - dandan_mainpage # build dandan_mainpage branch only
 
+install:
+  - bash install.sh
+
 script:
 #  - hexo generate # generate static files
   - bash generate.sh
