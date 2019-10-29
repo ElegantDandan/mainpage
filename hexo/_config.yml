@@ -4,8 +4,8 @@
 
 # Site
 title: dandan's HP
-subtitle: ——蛋淡
-description: 忽然觉得做技术的是世界上最可爱的一群人
+subtitle: —蛋淡
+description: 人们所做的每件事都来源于两个动机：性欲与想变得伟大的欲望
 author: dandan
 language: zh-CN
 timezone: 
@@ -63,7 +63,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: http://hexo.io/plugins/
 ## Themes: http://hexo.io/themes/
-theme: yilia
+theme: next
 
 disqus_shortname: dandan
 
