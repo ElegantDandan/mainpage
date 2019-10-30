@@ -18,14 +18,9 @@ script:
   - bash generate.sh
 
 after_script:
-  - cd ./public
-  - git init
-  - git config user.name "dandan" --{GitHub账户名称}
-  - git config user.email "ry.socket@gmail.com" --{Github账户邮箱}
-  - git add .
-  - git commit -m "Update docs"
-  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
-
+  - cd ./hexo
+  - hexo d
+  
 env:
  global:
    - GH_REF: github.com/ElegantDandan/ElegantDandan.github.io.git --{仓库地址}
