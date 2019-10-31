@@ -13,6 +13,10 @@ branches:
 install:
   - bash install.sh
 
+cache:
+  directories:
+    - node_modules
+
 script:
 #  - hexo generate
   - bash generate.sh
