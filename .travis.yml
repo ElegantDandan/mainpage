@@ -14,13 +14,18 @@ install:
   - bash install.sh
 
 script:
-#  - hexo generate # generate static files
+#  - hexo generate
   - bash generate.sh
 
 after_script:
-  - cd ./hexo
-  - hexo d
+  - cd  hexo/public
+  - git init
+  - git config user.name "dandan"
+  - git config user.email "ry.socket@gmail.com"
+  - git add .
+  - git commit -m "Update docs"
+  - git push --force --quiet "https://${repo_taken}@${GH_REF}" master:master
   
 env:
  global:
-   - GH_REF: github.com/ElegantDandan/ElegantDandan.github.io.git --{仓库地址}
+   - GH_REF: github.com/ElegantDandan/ElegantDandan.github.io.git
