@@ -1,35 +1,28 @@
 sudo: false
 language: node_js
-
 node_js:
-  - 12 # use nodejs v10 LTS
-
-cache: npm
-
-branches:
-  only:
-    - dandan_mainpage # build dandan_mainpage branch only
-
-install:
-  - bash install.sh
-
+- 12
 cache:
   directories:
-    - node_modules
-
+  - node_modules
+branches:
+  only:
+  - dandan_mainpage
+install:
+- bash install.sh
 script:
-#  - hexo g
-  - bash generate.sh
-
+- bash generate.sh
 after_script:
-  - cd  hexo/public
-  - git init
-  - git config user.name "dandan"
-  - git config user.email "ry.socket@gmail.com"
-  - git add .
-  - git commit -m "Update docs"
-  - git push --force --quiet "https://${repo_taken}@${GH_REF}" master:master
-
+- cd  hexo/public
+- git init
+- git config user.name "dandan"
+- git config user.email "ry.socket@gmail.com"
+- git add .
+- git commit -m "Update docs"
+- git push --force --quiet "https://${repo_taken}@${GH_REF}" master:master
 env:
- global:
-   - GH_REF: github.com/ElegantDandan/ElegantDandan.github.io.git
+  global:
+  - GH_REF: github.com/ElegantDandan/ElegantDandan.github.io.git
+before_install:
+- openssl aes-256-cbc -K $encrypted_0d170fcd25c4_key -iv $encrypted_0d170fcd25c4_iv
+  -in id_rsa.enc -out ~\/.ssh/id_rsa -d
