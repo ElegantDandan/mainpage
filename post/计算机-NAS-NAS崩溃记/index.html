@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"cddan.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="​        家里两台NAS的其中一台蹦了，还包含着重要数据。在恢复数据的过程中，被搞的要死要活，同时深深的体会到了什么叫福无双至，祸不单行。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NAS崩溃记">
+<meta property="og:url" content="http://cddan.com/post/%E8%AE%A1%E7%AE%97%E6%9C%BA-NAS-NAS%E5%B4%A9%E6%BA%83%E8%AE%B0/index.html">
+<meta property="og:site_name" content="dandan&#39;s HP">
+<meta property="og:description" content="​        家里两台NAS的其中一台蹦了，还包含着重要数据。在恢复数据的过程中，被搞的要死要活，同时深深的体会到了什么叫福无双至，祸不单行。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-23T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-03-23T16:00:00.000Z">
+<meta property="article:author" content="dandan">
+<meta property="article:tag" content="NAS">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://cddan.com/post/%E8%AE%A1%E7%AE%97%E6%9C%BA-NAS-NAS%E5%B4%A9%E6%BA%83%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>NAS崩溃记 | dandan's HP</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">dandan's HP</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">—蛋淡</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://cddan.com/post/%E8%AE%A1%E7%AE%97%E6%9C%BA-NAS-NAS%E5%B4%A9%E6%BA%83%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="dandan">
+      <meta itemprop="description" content="人们所做的每件事都来源于两个动机:性欲与想变得伟大的欲望">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dandan's HP">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          NAS崩溃记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-24 00:00:00" itemprop="dateCreated datePublished" datetime="2021-03-24T00:00:00+08:00">2021-03-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/NAS/" itemprop="url" rel="index"><span itemprop="name">NAS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>​        家里两台NAS的其中一台蹦了，还包含着重要数据。在恢复数据的过程中，被搞的要死要活，同时深深的体会到了什么叫福无双至，祸不单行。</p>
+<span id="more"></span>
+
+<p>​        两台NAS其中一台是蜗牛，运行黑群晖，也是本次的主角，通过公网IP向外提供文件服务，另一台则是近两个月新配的NAS，运行TrueNAS系统，另装一台NAS的原因是蜗牛只有四盘位，而且可靠性不够，之前也出现过掉盘问题，就重新买配件装了一台，为了ZFS文件系统上了TrueNAS，准备哪天把数据迁移过去。那台蜗牛在过去的一年内运行稳定，但我嫌弃小文件读取速度慢，搞了一块240G的SSD作为只读缓存用于加速读取，前一天晚上装进机箱并开启相关配置，第二天发现从外网无法读取服务器内容了，一开始只是以为DDNS出问题了（之前有过类似情况）。</p>
+<p>​        然而回到家打开黑裙后台，一个大大的感叹号挂在消息提醒处，存储空间全部损毁，瞬间头皮发麻，一堆自己经年累月整理的资料全放在上面，而且一开始为了保证可用性（注意，这里说的是可用性而不是可靠性）还组了raid1，大多数资料除此之外都没有备份，人都傻了，愣了一段时间，开始找解决方案。</p>
+<p>​        初步判断可能是挂缓存的过程中某些操作导致系统认为存储出现重大问题，直接关闭了存储空间，也就是我看到的存储空间损毁，硬盘依然能被系统正确识别，smart信息也没问题，说明数据大概率还在，换个方式读取出来就行。事实证明也是如此，查阅相关资料以后发现群晖官方是有提供数据恢复方案的（<a target="_blank" rel="noopener" href="https://www.synology.com/en-global/knowledgebase/DSM/tutorial/Storage/How_can_I_recover_data_from_my_DiskStation_using_a_PC">传送门</a>），把硬盘拆出来，装进一台linux主机，然后运行一些程序就可以读取阵列硬盘内的数据，挑战开始。</p>
+<p>​        第一步就是搞一台linux主机，家里没有，装虚拟机的话硬盘直通又是一个问题，还是物理实机比较靠谱，当时慌得一批，直接去公司把日常工作用机扛了回来，后面有朋友提醒是可以拿ubuntu的livecd直接在蜗牛上操作的，然而当时心态有点崩，而且怀疑问题是由于硬件问题导致的，所以就没敢再拿原机器动手。</p>
+<p>​        电脑扛回来，拆了以后发现电源只有仨硬盘供电口，扣除系统SSD以外我还需要额外三个，两个原数据磁盘以及一块转移数据的备份盘，只能再跑一趟，从朋友那里借来了大4P转SATA供电线，东西装上开机又特么撞到坑了，连sudo apt update都做不到，之前家里是专门拿R2S做了个独立网关，一些科雪上王啥的插件放上面，然后路由器把网关设置过来，这样所有设备都可以不用特殊设置就可以科雪浏览，所以linux主机也就一直没换软件源，然而R2S前两天断电重启的时候挂了，一直没去找原因，不管是换源也好修机器也罢，弄好以后已经是凌晨一点半了，硬盘成功挂载，数据也可以正常读取，看着那些原始文件那叫一个感动，谁特么知道后面还有坑…</p>
+<p>​        第二天开始挪数据，目标是把蜗牛硬盘数据都转移到TrueNAS那台文件服务器上，理论上直接挂个NFS然后直接往里面灌数据就完事了，然而TrueNAS的NFS服务一直用不起来，之前也没找到原因，所以方案B是找个硬盘读出来然后再手动搬运到另一台NAS，也就是我之前塞进机箱的那块备份盘，思路清晰以后就赶紧动手，真是too yuang too simple，实际操作才发现拷贝速度从几十M一直锐减到三四M一秒，而且再也提不上去，首先推测是不是文件管理器直接拖拽的问题，直接用cp命令然后打了个显示速度和进度条的补丁，发现现象依旧；其次猜测可能是由于这块备份盘是叠瓦盘，缓存写爆以后写入掉速，后续和朋友讨论是在linux环境下，使用mount命令貌似默认不会开启硬盘缓存，而是使用主机内存作为缓存，内存用光以后就开始掉速了。不管是哪个原因，3M一秒搞毛线，这要搬到猴年马月……只能又搞了个骚操作，先把数据拷贝到固态硬盘上，然后再从固态转移到备份盘上，总而言之就是先把数据撸出来再说，实际上也确实奏效，固态盘的可用容量只有三百多G，但是要搬运的数据量有接近4个T，只能是缓兵之计，还是得去解决一下NFS挂载的问题。</p>
+<p>​        把TrueNAS论坛关于NFS挂载失败的问题看了个遍，终于找到解决方案（<a target="_blank" rel="noopener" href="https://www.truenas.com/community/threads/nfs-share-mount-on-ubuntu-20-04.91803/">传送门</a>），需要使用maproot命令对分享的目录映射用户以及用户组，举例子：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat <span class="regexp">/etc/</span>exports</span><br><span class="line"><span class="regexp">/mnt/</span>tank<span class="regexp">/nextcloud -alldirs -maproot=&quot;root&quot;:&quot;wheel&quot; -network 192.168.1.0/</span><span class="number">24</span></span><br></pre></td></tr></table></figure>
+
+<p>把client端的root用户映射为NAS上的root，client端的root组映射为NAS上的wheel (gid&#x3D;0) 组。这个参数非常重要，否则会nfsroot链接失败。这是freeBSD上的内容，常用的Ubuntu等debian系可没这玩意。其次，挂载时加上<code>-o tcp,vers=3</code>，skip掉NFS4 and UDP</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -o tcp,vers=<span class="number">3</span> -vv <span class="number">192.168</span>.<span class="number">1.167</span>:<span class="regexp">/mnt/</span>tank<span class="regexp">/nextcloud /</span>home<span class="regexp">/username/</span>nextcloud_mounted/</span><br></pre></td></tr></table></figure>
+
+<p>​        NFS服务正常运行后，写入速度有了质的提升，从原来的3M一秒飙升到几十M，虽然说不能跑满千兆线速，但是这已经可以把文件拷贝时间压到一个可以接受的程度了。</p>
+<p>​        我以为这已经完事大吉了，接下来就是等待而已，还是too yuang，生活总是会在不经意间给你惊喜。拷贝到一半，拷贝停止，NFS服务忽然卡住，我的心里瞬间咯噔一下，这又是咋地了，那边崩完这边崩？查看trueNAS后台发现系统无法识别其中一块硬盘了，这块掉线硬盘的表现也很奇怪，听声音感觉到转速由低到高，达到最高转速后忽然发出一声尖刺声，转速又逐步降低，又逐步提高，如此往复。把硬盘拿出来使用USB硬盘盒接入win10电脑，识别很正常，坏道扫描也没有问题，数据能正常读取，怀疑是逻辑坏道，重新格式化以后装回去，现象依旧，反正就是拿出来没问题装回去就挨卵，把目光放到了硬盘的接线上，最后排查到的问题是插在这个硬盘上的电源线有问题，换了个硬盘电源线就ok，我TM？？这么小概率的事情也能让我撞上？这个周末我是不是把能踩的坑全踩完了？</p>
+<p>​        在这之后，安安静静的把数据灌完，没再出别的幺蛾子。</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>​        经过这一番折腾，现在重新回头看，我是不敢用群辉直接管硬盘了，愈发觉得群辉这系统一点都不健壮，一点小问题就会直接触发一些特殊操作，比如说损毁硬盘空间，但是实际上硬盘本身没有问题，拿到外面还是可以读取的，可能是担心用户误操作导致数据实际受损，所以提前帮你关闭读写，然后让你备份数据？群辉的那些APP确实多，功能丰富，真要用的话也是nfs或者网络硬盘的方式映射过去，底层还是用ZFS比较靠谱。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://www.truenas.com/community/threads/nfs-share-mount-on-ubuntu-20-04.91803/">SOLVED - NFS share mount on Ubuntu 20.04 | TrueNAS Community</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/NAS/" rel="tag"># NAS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA-%E7%BD%91%E7%BB%9C-LEDEOpenWrt%E4%BD%9C%E4%B8%BA%E6%97%81%E8%B7%AF%E7%94%B1%E8%BE%85%E5%8A%A9%E7%BD%91%E5%85%B3%E8%AE%BE%E7%BD%AE/" rel="prev" title="LEDEOpenWrt作为旁路由辅助网关设置">
+      <i class="fa fa-chevron-left"></i> LEDEOpenWrt作为旁路由辅助网关设置
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0"><span class="nav-text">后记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-text">参考</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="dandan"
+      src="/uploads/avatar.jpg">
+  <p class="site-author-name" itemprop="name">dandan</p>
+  <div class="site-description" itemprop="description">人们所做的每件事都来源于两个动机:性欲与想变得伟大的欲望</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ry.socket@gmail.com" title="E-Mail → mailto:ry.socket@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/ElegantDandan" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;ElegantDandan" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dandan</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
