@@ -14,7 +14,7 @@ echo "=============================="
 echo " generate file"
 echo "=============================="
 cd $SOURCE_FOLDER
-find -name "*.md" -print0|xargs -0 -i python $SHELL_FOLDER/scripts/do_copy.py "{}" "$BUILD_FOLDER"
+find -name "*.md" -print0|xargs -0 -i python3 $SHELL_FOLDER/scripts/do_copy.py "{}" "$BUILD_FOLDER"
 
 echo "=============================="
 echo " copy to _post"
